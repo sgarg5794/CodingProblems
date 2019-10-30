@@ -1,0 +1,26 @@
+/*
+#r= number of rows
+#c= number of columns
+# matrix is the given matrix
+*/
+matrix=[[10,7,3,4,5],
+        [12,11,9,5,4],
+        [1,2,8,2,7]]
+r=3
+c=5
+for i in range(r):
+    for j in range(c):
+        if i==0:
+            if j==0:
+                continue
+            if matrix[i][j]>matrix[i][j-1]:
+                matrix[i][j]=matrix[i][j-1]
+                continue
+        if j==0:
+            if i==0:
+                continue
+            if matrix[i][j]>matrix[i-1][j]:
+                matrix[i][j]=matrix[i-1][j]
+                continue
+        matrix[i][j]=max(min(matrix[i][j-1],matrix[i][j]),min(matrix[i][j],matrix[i-1][j]))
+print(matrix[r-1][c-1])
